@@ -1,7 +1,7 @@
 package ru.Netology
 
 fun main() {
-    var purchaseSum = 11000
+    var purchaseSum = 20000
     var loyalClient = true
     var discount = 0.0
 
@@ -11,16 +11,20 @@ fun main() {
         purchaseSum -= 100
         print("Ваша скидка составила 100 рублей. Сумма покупки: " + purchaseSum)
     } else if (purchaseSum > 1000 && purchaseSum <= 10000 && loyalClient == true) {
-        discount = (purchaseSum * 0.01) + 100
+        purchaseSum -= 100
+        discount = purchaseSum * 0.01
         purchaseSum -= discount.toInt()
-        print("Ваша скидка составила " + discount.toInt() + " рублей. Сумма покупки: " + purchaseSum)
+        print("Ваша скидка составила " + (discount.toInt() + 100) + " рублей. Сумма покупки: " + purchaseSum)
     } else if (purchaseSum > 10000 && loyalClient == false) {
         discount = purchaseSum * 0.05
         purchaseSum -= discount.toInt()
         print("Ваша скидка составила " + discount.toInt() + " рублей. Сумма покупки: " + purchaseSum)
     } else if (purchaseSum > 10000 && loyalClient == true) {
-        discount = purchaseSum * 0.06
+        discount = purchaseSum * 0.05
         purchaseSum -= discount.toInt()
+        var newDiscount = purchaseSum * 0.01
+        purchaseSum -= newDiscount.toInt()
+        discount += newDiscount
         print("Ваша скидка составила " + discount.toInt() + " рублей. Сумма покупки: " + purchaseSum)
     }
 }
